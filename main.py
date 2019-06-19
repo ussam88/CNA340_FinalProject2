@@ -46,29 +46,40 @@ def root():
     item_data = parse(item_data)
     return render_template('home.html', itemData=item_data, loggedIn=logged_in, firstName=first_name, noOfItems=no_of_items, categoryData=category_data)
 
-@app.route("/add")
-def admin():
-    with sqlite3.connect('database.db') as conn:
-        cur = conn.cursor()
-        cur.execute("SELECT categoryId, name FROM categories")
-        categories = cur.fetchall()
     conn.close()
     return render_template('add.html', categories=categories)
+
+@app.route("/addItem", methods=["GET", "POST"])
+def addItem():
+    if request.method == "POST":
+        name = request.form['name']
+        price = float(request.form['price'])
+        description = request.form['description']
+        stock = int(request.form['stock'])
+        categoryId = int(request.form['category'])
+
+        #Upload image
+        image = request.files['image']
+        if image and allowed_file(image.filename):
+            filename = secure_filename(image.filename)
+            image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        imagename = filename
+        with sqlite3.connect('database.db') as conn:
+            try:
+                cur = conn.cursor()
+                cur.execute('''INSERT INTO products (name, price, description, image, stock, categoryId) VALUES (?, ?, ?, ?, ?, ?)''', (name, price, description, imagename, stock, categoryId))
+                conn.commit()
+                msg="Added successfully"
+            except:
+                msg="Error occured"
+                conn.rollback()
+        conn.close()
+        print(msg)
+        return redirect(url_for('root'))
 
 @app.route("/displayCategory")
 def displayCategory():
     logged_in, first_name, no_of_items = get_login_details()
-    category_id = request.args.get("categoryId")
-    with sqlite3.connect('database.db') as conn:
-        cur = conn.cursor()
-        cur.execute(
-            "SELECT products.productId, products.name, products.price, products.image, categories.name FROM products, categories WHERE products.categoryId = categories.categoryId AND categories.categoryId = " + category_id)
-        data = cur.fetchall()
-    conn.close()
-    category_name = data[0][4]
-    data = parse(data)
-    return render_template('displayCategory.html', data=data, loggedIn=logged_in, firstName=first_name,
-                           noOfItems=no_of_items, categoryName=category_name)
 
 
 @app.route("/account/profile")
