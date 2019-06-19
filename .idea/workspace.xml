@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1c312c6c-ba2c-404d-8718-2e42ffe8499a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-    </list>
+    <list default="true" id="1c312c6c-ba2c-404d-8718-2e42ffe8499a" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +95,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="497" />
     <option name="width" value="876" />
     <option name="height" value="735" />
@@ -302,7 +300,7 @@
     <option name="totallyTimeSpent" value="10977000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="497" y="0" width="876" height="735" extended-state="1" />
+    <frame x="497" y="0" width="876" height="735" extended-state="0" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.43675417" />
       <window_info id="Structure" order="1" weight="0.25" />
@@ -312,7 +310,7 @@
       <window_info anchor="bottom" id="Debug" order="2" weight="0.39899623" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="Run" order="5" visible="true" weight="0.21428572" />
+      <window_info anchor="bottom" id="Run" order="5" weight="0.21428572" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.3286385" />
